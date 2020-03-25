@@ -1,9 +1,5 @@
-#define SOFTWARE	"KURS 2020"
-#define DATUM		"08.03.2020"
-
 /*
 Christof Ermer
-QUELLE:  Z:\00_Kurs2020_ATMega328p_Progs\00_AT328-Bitfield_Tick_1S_LedB5_LEER
 
 Bibliothek: file:///C:/WinAVR-20100110/doc/avr-libc/avr-libc-user-manual/modules.html
 µController Defines, File Explorer: C:\WinAVR-20100110\avr\include\avr\iom328p.h
@@ -14,11 +10,6 @@ int8_t uint8_t int16_t uint16_t int32_t uint32_t ISR main
  https://homepages.uni-regensburg.de/~erc24492/
   ------------------------------------------------
 */
-
-#define AUTOR		"* Christof Ermer *"
-#define HARDWARE	"Arduino UNO ATMega328p"
-#define IHAVENOBRAIN	"*Habe kein Hirn*"
-#define USEYOURS		"*benutze Deins!*"
 
 #include "main.h"		//with Hardware assign
 
