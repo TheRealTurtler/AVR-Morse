@@ -280,6 +280,37 @@ void SendMorseChar( uint8_t u8Ascii )
 			CLEAR_MORSE_BUSY_BIT();
 			sei();
 		}
+		
+		// Buchstabenpause senden
+		
+		gstMorseData.u32SignalLaenge = gstMorseData.u32BuchstabenPauseLaenge;
+		gstMorseData.u16TonFreq = 0;		// Ton
+		
+		gstMorseFlags.Punkt_F = 0;
+		gstMorseFlags.Strich_F = 0;
+		gstMorseFlags.ZeichenPause_F = 0;
+		gstMorseFlags.BuchstabenPause_F = 1;
+		gstMorseFlags.WortPause_F = 0;
+		
+		gstMorseFlags.Ready_F = 0;
+		//gstMorseFlags.Stop_F = 1;
+		//gstMorseFlags.Aktiv_F = 0;
+		gstMorseFlags.Start_F = 1;
+		
+		while ( !gstMorseFlags.Ready_F )
+		{
+			// Warten bis senden fertig
+			wdt_reset();
+			
+			// cli() und sei(), verwenden, da interrupt port setzen unterbrechen kann
+			cli();
+			TOGGLE_MORSE_BUSY_BIT();
+			sei();
+		}
+		
+		cli();
+		CLEAR_MORSE_BUSY_BIT();
+		sei();
 	}
 	else
 	{
@@ -382,9 +413,10 @@ void SetMorseSpeed( uint16_t u16SpeedMS )
 	gstMorseData.u32StrichLaenge = gstMorseData.u32Geschwindigkeit * 3;
 	gstMorseData.u32ZeichenPauseLaenge = gstMorseData.u32Geschwindigkeit;
 	
-	// Buchstaben- und Wortpause sind verkürzt, da automatisch  an jedes Zeichen eine Zeichenpause angehängt wird
+	// Buchstaben- und Wortpause sind verkürzt, da automatisch an jedes Zeichen eine Zeichenpause angehängt wird
+	// Wortpause zusätzlich verkürzt, da nach jedem Buchstaben eine Buchstabenpause angehängt wird
 	gstMorseData.u32BuchstabenPauseLaenge = gstMorseData.u32Geschwindigkeit * 2;
-	gstMorseData.u32WortPauseLaenge = gstMorseData.u32Geschwindigkeit * 6;
+	gstMorseData.u32WortPauseLaenge = gstMorseData.u32Geschwindigkeit * 4;
 }
 
 #endif

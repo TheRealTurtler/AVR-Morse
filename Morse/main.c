@@ -17,7 +17,7 @@ int8_t uint8_t int16_t uint16_t int32_t uint32_t ISR main
 volatile uint32_t gu32Ticks;
 volatile BIT_FIELD_TYPE gstFlags;
 
-char gcaMorseText[] = "sos ";
+char gcaMorseText[] = "test ";
 
 #define TICK_1S_EVENT		0x04
 #define TICK_100MS_EVENT	0x20

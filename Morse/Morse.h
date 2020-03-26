@@ -28,7 +28,7 @@
 // ================ Definitionen ==========================
 
 #define TIMER_FRQ_KHZ					72U		// Anzahl compare timer events pro Sekunde (-> gemessene Frequenz an OCA-Port ist nur 1/2 wegen toggle)
-#define DEFAULT_MORSE_PUNKT_LAENGE_MS	240U	// Zeitdauer eines Punkts in Millisekunden
+#define DEFAULT_MORSE_PUNKT_LAENGE_MS	400U	// Zeitdauer eines Punkts in Millisekunden
 
 #define MORSE_DDRX	DDRF
 #define MORSE_PORTX	PORTF
